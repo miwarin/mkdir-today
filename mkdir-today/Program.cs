@@ -21,21 +21,20 @@ namespace mkdir_today
             if (args.Length == 0)
             {
                 Console.WriteLine("コマンドライン引数はありません。");
+                return;
             }
-            else
-            {
-                String basedir = Path.GetDirectoryName(args[0]);
-                if (Directory.Exists(basedir) == false)
-                {
-                    Console.WriteLine("ディレクトリを指定してね");
-                    return;
-                }
 
-                String today = Today();
-                String path = Path.Combine(basedir, today);
-                Console.WriteLine("create {0}", path);
-                Directory.CreateDirectory(path);
+            String basedir = Path.GetDirectoryName(args[0]);
+            if (Directory.Exists(basedir) == false)
+            {
+                Console.WriteLine("ディレクトリを指定してね");
+                return;
             }
+
+            String today = Today();
+            String path = Path.Combine(basedir, today);
+            Console.WriteLine("create {0}", path);
+            Directory.CreateDirectory(path);
         }
     }
 }
